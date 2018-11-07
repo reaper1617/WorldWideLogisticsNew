@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+         xsi:schemaLocation="http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd">
+
+
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/" access="isFullyAuthenticated() or isAnonymous()"/>
+        <intercept-url pattern="/WEB-INF/views/login.jsp" access="isFullyAuthenticated() or isAnonymous()"/>
+        <intercept-url pattern="/logged.jsp" access="isFullyAuthenticated()"/>
+        <intercept-url pattern="/logout.jsp" access="isFullyAuthenticated()"/>
+        <intercept-url pattern="/orders" access="isAnonymous() or isFullyAuthenticated()"/>
+        <intercept-url pattern="/stats" access="isAnonymous() or isFullyAuthenticated()"/>
+        <intercept-url pattern="/adminmainpagegoogle.jsp" access="isFullyAuthenticated() or isAnonymous()"/>
+        <intercept-url pattern="/gettoporders" access="isFullyAuthenticated() or isAnonymous()"/>
+
+        <form-login login-page="/WEB-INF/views/login.jsp" default-target-url="/" authentication-failure-url="/" authentication-success-handler-ref="authenticationSuccessHandler"/>
+
+         <access-denied-handler error-page="/error.jsp"/>
+
+        <logout logout-success-url="/index"/>
+        <csrf disabled="true"/>
+    </http>
+
+    <b:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <b:constructor-arg name="strength" value="4"/>
+    </b:bean>
+
+    <authentication-manager>
+        <authentication-provider user-service-ref="customUserDetailsService">
+            <password-encoder ref="encoder"/>
+        </authentication-provider>
+    </authentication-manager>
+
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
+
+    <b:bean id="customUserDetailsService" class="com.gerasimchuk.services.impls.CustomUserDetailsService">
+    </b:bean>
+
+    <b:bean id="authenticationManager" class="org.springframework.security.config.authentication.AuthenticationManagerFactoryBean">
+
+    </b:bean>
+
+    <b:bean id="authenticationSuccessHandler" class="com.gerasimchuk.services.impls.AuthenticationSuccessHandler"/>
+
+</b:beans>
