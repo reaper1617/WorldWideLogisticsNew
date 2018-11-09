@@ -11,7 +11,7 @@
 
     <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/" access="isFullyAuthenticated() or isAnonymous()"/>
-        <intercept-url pattern="/WEB-INF/views/login.jsp" access="isFullyAuthenticated() or isAnonymous()"/>
+        <intercept-url pattern="/login" access="isFullyAuthenticated() or isAnonymous()"/>
         <intercept-url pattern="/logged.jsp" access="isFullyAuthenticated()"/>
         <intercept-url pattern="/logout.jsp" access="isFullyAuthenticated()"/>
         <intercept-url pattern="/orders" access="isAnonymous() or isFullyAuthenticated()"/>
@@ -19,7 +19,34 @@
         <intercept-url pattern="/adminmainpagegoogle.jsp" access="isFullyAuthenticated() or isAnonymous()"/>
         <intercept-url pattern="/gettoporders" access="isFullyAuthenticated() or isAnonymous()"/>
 
-        <form-login login-page="/WEB-INF/views/login.jsp" default-target-url="/" authentication-failure-url="/" authentication-success-handler-ref="authenticationSuccessHandler"/>
+        <!--// driver access-->
+        <intercept-url pattern="/worldwidelogistics/drivermainpage/**" access="hasRole('DRIVER')"/>
+        <!--//admin access-->
+        <intercept-url pattern="/worldwidelogistics/adminmainpage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/addnewcitypage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/addnewroutepage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/addnewuserpage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/changecitypage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/changeroutepage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/orderchangepage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/userchangepage/**" access="hasRole('ADMIN')"/>
+        <intercept-url pattern="/worldwidelogistics/reassigntrucktoorderpage/**" access="hasRole('ADMIN')"/>
+        <!--// admin + manager access-->
+        <intercept-url pattern="/worldwidelogistics/adminmainpagegoogle/**" access="hasRole('ADMIN') or hasRole('MANAGER')"/>
+        <intercept-url pattern="/worldwidelogistics/addnewcargopage/**" access="hasRole('ADMIN') or hasRole('MANAGER')"/>
+        <intercept-url pattern="/worldwidelogistics/addneworderpage/**" access="hasRole('ADMIN') or hasRole('MANAGER')"/>
+        <intercept-url pattern="/worldwidelogistics/addnewtruckpage/**" access="hasRole('ADMIN') or hasRole('MANAGER')"/>
+        <intercept-url pattern="/worldwidelogistics/assigntrucktoorderpage/**" access="hasRole('ADMIN') or hasRole('MANAGER')"/>
+        <intercept-url pattern="/worldwidelogistics/cargochangepage/**" access="hasRole('ADMIN') or hasRole('MANAGER')"/>
+        <intercept-url pattern="/worldwidelogistics/truckchangepage/**" access="hasRole('ADMIN') or hasRole('MANAGER')"/>
+
+        <!--// manager access-->
+        <intercept-url pattern="/worldwidelogistics/managermainpage/**" access="hasRole('MANAGER')"/>
+        <intercept-url pattern="/worldwidelogistics/driverchangepage/**" access="hasRole('MANAGER')"/>
+
+
+
+        <form-login login-page="/login" default-target-url="/" authentication-failure-url="/" authentication-success-handler-ref="authenticationSuccessHandler"/>
 
          <access-denied-handler error-page="/error.jsp"/>
 
