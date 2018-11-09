@@ -44,7 +44,6 @@ public class AdminRepositoryImpl implements AdminRepository {
     public Admin update(int id) {
         LOGGER.info("Class: " + this.getClass().getName() + " method: update");
         Admin updated = sessionFactory.getCurrentSession().get(Admin.class,id);
-        // update actions
         sessionFactory.getCurrentSession().update(updated);
         LOGGER.info("Updated user: admin, id = " + updated.getId());
         return updated;

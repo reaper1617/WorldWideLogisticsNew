@@ -105,7 +105,6 @@ public class DriverRepositoryImpl implements DriverRepository {
     @Override
     @Transactional
     public int getNumOfDriversFree() {
-        // todo: make hql !!
         Collection<Driver> allDrivers = getAll();
         int res = 0;
         for(Driver d: allDrivers){

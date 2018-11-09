@@ -162,7 +162,6 @@ public class UserRepositoryImpl implements UserRepository {
             return null;
         }
         String query = "select * from Trucks desc " + pageSize ;
-        //String testQuery = "select * from Orders limit 0,2"; /// + pageNumber*pageSize + "," + pageSize ;
         Query q = sessionFactory.getCurrentSession().createQuery("from Users");
         q.setFirstResult(pageNumber*pageSize);
         q.setMaxResults(pageSize);

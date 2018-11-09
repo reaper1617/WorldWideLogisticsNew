@@ -108,8 +108,6 @@ public class CityRepositoryImpl implements CityRepository {
             LOGGER.error("Class: " + this.getClass().getName() + " method: getCitiesForOnePage() error: page number > total number of pages.");
             return null;
         }
-        String query = "select * from Cities desc " + pageSize;
-        //String testQuery = "select * from Orders limit 0,2"; /// + pageNumber*pageSize + "," + pageSize ;
         Query q = sessionFactory.getCurrentSession().createQuery("from Cities");
         q.setFirstResult(pageNumber*pageSize);
         q.setMaxResults(pageSize);

@@ -125,8 +125,6 @@ public class CargoRepositoryImpl implements CargoRepository {
             LOGGER.error("Class: " + this.getClass().getName() + " method: getCargosForOnePage() error: page number > total number of pages.");
             return null;
         }
-        String query = "select * from Cargos desc " + pageSize ;
-        //String testQuery = "select * from Orders limit 0,2"; /// + pageNumber*pageSize + "," + pageSize ;
         Query q = sessionFactory.getCurrentSession().createQuery("from Cargos");
         q.setFirstResult(pageNumber*pageSize);
         q.setMaxResults(pageSize);

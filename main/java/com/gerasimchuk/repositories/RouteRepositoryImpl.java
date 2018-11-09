@@ -115,8 +115,6 @@ public class RouteRepositoryImpl implements RouteRepository {
             LOGGER.error("Class: " + this.getClass().getName() + " method: getRoutesForOnePage() error: page number > total number of pages.");
             return null;
         }
-        String query = "select * from Routes desc " + pageSize ;
-        //String testQuery = "select * from Orders limit 0,2"; /// + pageNumber*pageSize + "," + pageSize ;
         Query q = sessionFactory.getCurrentSession().createQuery("from Routes");
         q.setFirstResult(pageNumber*pageSize);
         q.setMaxResults(pageSize);

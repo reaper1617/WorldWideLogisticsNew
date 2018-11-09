@@ -45,7 +45,6 @@ public class ManagerRepositoryImpl implements ManagerRepository {
     public Manager update(int id) {
         LOGGER.info("Class: " + this.getClass().getName() + " method: update");
         Manager updated = sessionFactory.getCurrentSession().get(Manager.class,id);
-        // update actions
         sessionFactory.getCurrentSession().update(updated);
         LOGGER.info("Updated user: manager");
         return updated;

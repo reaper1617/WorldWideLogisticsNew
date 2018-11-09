@@ -126,7 +126,7 @@ public class UserController {
         LOGGER.info("Controller: UserController, metod = login,  action = \"/login\", request = POST");
         if (error!=null){
             LOGGER.error("Login error during executing login method");
-            ui.addAttribute("actionFailed", "Login error during executing login method!"); //todo: message about error while log in
+            ui.addAttribute("actionFailed", "Login error during executing login method!");
             return "failure";
         }
         return "/login";
