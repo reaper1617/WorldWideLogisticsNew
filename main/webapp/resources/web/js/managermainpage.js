@@ -1,4 +1,3 @@
-//todo: make one func with input parameter selectId !
 
 let contextName = "/worldwidelogistics";
 

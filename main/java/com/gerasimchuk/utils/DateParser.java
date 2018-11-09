@@ -6,9 +6,6 @@ package com.gerasimchuk.utils;
 public class DateParser {
 
     private static final org.apache.log4j.Logger LOGGER = org.apache.log4j.Logger.getLogger(DateParser.class);
-    // Tue Sep 18 02:35:39 MSK 2018
-    // Ddd MMM dd hh:mm:ss z yyyy
-
 
     /**
      * Parse year int.

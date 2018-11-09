@@ -98,7 +98,6 @@ function showMoreOrders() {
                     "\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-primary\">Edit</button>\n" +
                     "\t\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" hidden name=\"id\" value=\"" + item.id + "\">\n" +
                     "\t\t\t\t\t\t\t\t\t\t\t</form>";
-                // tdDeleteBtn.innerHTML = "<form action=\"${pageContext.request.contextPath}/adminmainpage/2\" method=\"post\" >\n" +
                 tdDeleteBtn.innerHTML = "<form action='#'>\n" +
                     "<button type=\"submit\" id=\"del+${order.id}\" class=\"btn btn-danger\" onclick=\"deleteOrder("+item.id+")\">Delete</button>" +
                     "\t\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" hidden name=\"id\" value=\"" +item.id+"\">\n" +
@@ -157,10 +156,9 @@ function showMoreOrders() {
             var currentOrderPageNum = (Number)(document.getElementById('currentOrderPage').getAttribute('value'));
             var newNum = (Number)(currentOrderPageNum + 1);
             document.getElementById('currentOrderPage').setAttribute('value',newNum);
-            // alert("current order page=" + newNum);
         }
     };
-    var pageSize = 2; //document.getElementById('currentOrderPage').value();
+    var pageSize = 2;
     var pageNumber = (Number)(document.getElementById('currentOrderPage').getAttribute('value'));
     var necessaryPageNumber = (Number)(pageNumber + 1);
     var reqURL = contextName + '/getpaginatedorderslist?pageSize='+pageSize+'&pageNumber='+necessaryPageNumber;
@@ -359,7 +357,7 @@ function showMoreUsers() {
             document.getElementById('currentUserPage').setAttribute('value',newNum);
         }
     };
-    var pageSize = 2; //document.getElementById('currentOrderPage').value();
+    var pageSize = 2;
     var pageNumber = (Number)(document.getElementById('currentUserPage').getAttribute('value'));
     var necessaryPageNumber = (Number)(pageNumber + 1);
     var reqURL = contextName + '/getpaginateduserslist?pageSize='+pageSize+'&pageNumber='+necessaryPageNumber;
@@ -438,10 +436,9 @@ function showMoreCargos() {
             var currentCargoPageNum = (Number)(document.getElementById('currentCargoPage').getAttribute('value'));
             var newNum = (Number)(currentCargoPageNum + 1);
             document.getElementById('currentCargoPage').setAttribute('value',newNum);
-            // alert("current cargo page=" + newNum);
         }
     };
-    var pageSize = 2; //document.getElementById('currentOrderPage').value();
+    var pageSize = 2;
     var pageNumber = (Number)(document.getElementById('currentCargoPage').getAttribute('value'));
     var necessaryPageNumber = (Number)(pageNumber + 1);
     var reqURL =contextName + '/getpaginatedcargoslist?pageSize='+pageSize+'&pageNumber='+necessaryPageNumber;
@@ -557,7 +554,7 @@ function showMoreCities() {
             document.getElementById('currentCityPage').setAttribute('value',newNum);
         }
     };
-    var pageSize = 2; //document.getElementById('currentOrderPage').value();
+    var pageSize = 2;
     var pageNumber = (Number)(document.getElementById('currentCityPage').getAttribute('value'));
     var necessaryPageNumber = (Number)(pageNumber + 1);
     var reqURL = contextName +'/getpaginatedcitieslist?pageSize='+pageSize+'&pageNumber='+necessaryPageNumber;
@@ -628,7 +625,7 @@ function showMoreRoutes() {
             document.getElementById('currentRoutePage').setAttribute('value',newNum);
         }
     };
-    var pageSize = 2; //document.getElementById('currentOrderPage').value();
+    var pageSize = 2;
     var pageNumber = (Number)(document.getElementById('currentRoutePage').getAttribute('value'));
     var necessaryPageNumber = (Number)(pageNumber + 1);
     var reqURL = contextName + '/getpaginatedrouteslist?pageSize='+pageSize+'&pageNumber='+necessaryPageNumber;

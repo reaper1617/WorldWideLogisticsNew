@@ -124,7 +124,6 @@ public class DriverController {
                 OrderDTO orderDTO = OrderToDTOConverterImpl.convert(order);
                 try {
                     List<City> cities =  (List<City>)orderService.getOrderRoute(orderDTO, null);
-                   // if (order.getAssignedTruck() != null) cities.add(0, order.getAssignedTruck().getCurrentCity());
                     OrderWithRoute orderWithRoute = new OrderWithRoute(order, cities);
                     ui.addAttribute("orderWithRoute", orderWithRoute);
                 }
@@ -135,7 +134,6 @@ public class DriverController {
                 }
             }
         }
-        // todo: refactor
         List<DriverStatus> driverStatusList = new ArrayList<DriverStatus>();
         driverStatusList.add(DriverStatus.FREE);
         driverStatusList.add(DriverStatus.DRIVING);
@@ -151,7 +149,6 @@ public class DriverController {
         orderStatusList.add(OrderStatus.EXECUTED);
         ui.addAttribute("orderStatusList", orderStatusList);
 
-        // todo: refactor!!
         List<CargoStatus> cargoStatusList = new ArrayList<CargoStatus>();
         cargoStatusList.add(CargoStatus.PREPARED);
         cargoStatusList.add(CargoStatus.LOADED);

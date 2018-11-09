@@ -140,7 +140,6 @@ public class AdminController {
         else {
             ui.addAttribute("ordersPgntd", null);
         }
-        // trucks
         List<Truck> trucksPgntd = (List<Truck>)truckRepository.getTrucksForOnePage(2,0);
         List<TruckDTO> truckDTOS = truckToDTOConverter.convert(trucksPgntd);
         ui.addAttribute("trucksPgntd", truckDTOS);
@@ -174,9 +173,7 @@ public class AdminController {
     @RequestMapping(value = "/adminmainpage/{id}", method = RequestMethod.GET)
     public String adminMainPage(@PathVariable("id") int id, Model ui, HttpServletRequest req) {
         LOGGER.info("Controller: AdminController, metod = adminMainPage,  action = \"/adminmainpage\", request = GET");
-        // orders
         setUpAdminPageAttributes(ui);
-
         LOGGER.info("Controller: AdminController, out from metod = adminMainPage");
         return "admin/adminmainpage";
     }
@@ -199,7 +196,6 @@ public class AdminController {
         List<Order> orders = (List<Order>)orderRepository.getOrdersForOnePage(pageSize, pageNum);
         List<OrderWithRouteDTO> orderDTOS = makeOrderDtoWithRouteFromOrdersList(orders);
         Gson gson = new Gson();
-        //OrderDTO dto =  OrderToDTOConverter.convert(orders.get(0));
         String s = gson.toJson(orderDTOS);
         LOGGER.info("Controller: AdminController, metod = getPaginatedOrdersList, GSON = " + s);
         return s;

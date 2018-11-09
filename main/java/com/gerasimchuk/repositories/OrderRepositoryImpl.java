@@ -101,18 +101,11 @@ public class OrderRepositoryImpl implements OrderRepository {
             LOGGER.error("Class: " + this.getClass().getName() + " method: getOrdersForOnePage() error: page number > total number of pages.");
             return null;
         }
-        String query = "select * from Orders desc " + pageSize ;
-        //String testQuery = "select * from Orders limit 0,2"; /// + pageNumber*pageSize + "," + pageSize ;
         Query q = sessionFactory.getCurrentSession().createQuery("from Orders");
         q.setFirstResult(pageNumber*pageSize);
         q.setMaxResults(pageSize);
             List<Order> res = (List<Order>)q.list();
             return res;
-//        LOGGER.info("Class: " + this.getClass().getName() + " method: getOrdersForOnePage(), Query = " + query );
-//        List<Order> resultList = sessionFactory.getCurrentSession().createQuery(q)
-//        LOGGER.info("Class: " + this.getClass().getName() + " method: getOrdersForOnePage(), resultList = " + resultList);
-//        LOGGER.info("Class: " + this.getClass().getName() + " out from getOrdersForOnePage()");
-//        return resultList;
     }
 
     @Override
@@ -123,8 +116,6 @@ public class OrderRepositoryImpl implements OrderRepository {
             LOGGER.info("Class: " + this.getClass().getName() + " out from getTopNonExecutedOrders() method: requested size less or equals 0");
             return null;
         }
-        //String query = "select * from Orders where status != 'EXECUTED' limit " + size;
-        //String query = "select * from orders o where o.status != 'EXECUTED' limit " + size;
         String query = "from Orders where status!='EXECUTED'";
         Query q = sessionFactory.getCurrentSession().createQuery(query);
         q.setMaxResults(size);
@@ -141,9 +132,7 @@ public class OrderRepositoryImpl implements OrderRepository {
             LOGGER.info("Class: " + this.getClass().getName() + " out from getLastOrders() method: requested number of orders less or equals 0");
             return null;
         }
-        //String query = "select * from Orders where status != 'EXECUTED' limit " + size;
-        //String query = "select * from orders o where o.status != 'EXECUTED' limit " + size;
-        String query = "from Orders o order by o.id desc"; // todo: desc
+        String query = "from Orders o order by o.id desc";
         Query q = sessionFactory.getCurrentSession().createQuery(query);
         q.setMaxResults(numberOfOrders);
         List<Order> res =(List<Order>)(q.list());

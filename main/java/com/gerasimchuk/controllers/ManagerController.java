@@ -252,7 +252,7 @@ public class ManagerController {
         LOGGER.info("Controller: ManagerController, metod = addNewDriverPage,  action = \"/addnewdriverpage\", request = GET");
 
         Collection<City> citiesList = cityRepository.getAll();
-        Collection<Truck> trucksList = truckRepository.getAll(); // todo: get only trucks that fit
+        Collection<Truck> trucksList = truckRepository.getAll();
         ui.addAttribute("citiesList", citiesList);
         ui.addAttribute("trucksList", trucksList);
         return "/manager/addnewdriverpage";
@@ -534,7 +534,7 @@ public class ManagerController {
     String driverChangePage(Model ui){
         LOGGER.info("Controller: ManagerController, metod = driverChangePage,  action = \"/driverchangepage\", request = GET");
         Collection<City> citiesList = cityRepository.getAll();
-        Collection<Truck> trucksList = truckRepository.getAll(); // todo: get only trucks that fit
+        Collection<Truck> trucksList = truckRepository.getAll();
         ui.addAttribute("citiesList", citiesList);
         ui.addAttribute("trucksList", trucksList);
         return "/manager/driverchangepage";
